@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组循环</title>
+</head>
+<body>
+    <script>
+        let list = [1,3,4,5,6,12];
+        /**
+         * forEach,map,filter,some,every
+         * 第二个参数替代this指向
+         */
+        list.forEach(function(value,index,array){
+            //console.log(`${this}==list[${index}]=${value}<==>array=${array}`);
+        },document);
+
+        //第二个参数无效
+        list.forEach((value,index,array) => {
+            //console.log(`${this}==list[${index}]=${value}<==>array=${array}`);
+        },document);
+
+        /**
+         * map映射
+         * 有返回值,返回新数组
+         */
+        let json = {
+            data:[
+                {title:'aaa',reda:100},
+                {title:'aaa',reda:100},
+                {title:'df',reda:1},
+                {title:'aaa',reda:4},
+                {title:'fdaf',reda:23},
+                {title:'aaa',reda:100},
+                {title:'dfd',reda:23},
+                {title:'aaa',reda:3},
+                {title:'df',reda:100}
+            ]
+        }
+        let newArray = json.data.map((value,index,array) => {
+           // console.log(value,index,array);
+           return {
+               t:value.title,
+               i:index
+           };
+        });
+
+        // console.log(newArray);
+
+        /**
+         * filter
+         * 返回true保留数组的值
+         */
+        let jsonTest = {
+            data:[
+                {title:'aaa',reda:100,hot:false},
+                {title:'aaa',reda:100,hot:true},
+                {title:'df',reda:1,hot:false},
+                {title:'aaa',reda:4,hot:false},
+                {title:'fdaf',reda:23,hot:true},
+                {title:'aaa',reda:100,hot:false},
+                {title:'dfd',reda:23,hot:true},
+                {title:'aaa',reda:3,hot:false},
+                {title:'df',reda:100,hot:false}
+            ]
+        }
+
+        let returnArray = jsonTest.data.filter((item,i) => {
+           if(item.hot) {
+               return true;
+           }
+        });
+        // console.log(returnArray);
+
+        /**
+         * some
+         * 查找数组中的元素，符合条件返回true
+         */
+
+        let num = [1,2,4,5];
+        let isHave = num.some((item,i) => {
+           return item == 1;
+        });
+        // console.log(isHave);
+
+        /**
+         * every
+         */
+
+        let oddArray = [2,4,8,6,0];
+        let isAllOdd = oddArray.every((item,i) => {
+            return item % 2 == 0;
+        });
+        // console.log(isAllOdd);
+
+        /**
+         * reduce
+         */
+
+        let arrs = [1,2,3,4,5,6,7,8,9,10];
+        let sum = arrs.reduce((previousValue,currentValue,currentIndex,array) => {
+            //previousValue为return后的值
+            // console.log(previousValue,currentValue);
+            return previousValue + currentValue;
+        });
+        // console.log(sum);
+        /**
+         * reduceRight
+         * 从右往左开始计算
+         */
+
+        let result = arrs.reduceRight((previousValue,currentValue,currentIndex,array) => {
+            //previousValue为return后的值
+            // console.log(previousValue,currentValue);
+            return previousValue - currentValue;
+        });
+
+        // console.log(result);
+
+        /**
+         * for ... of ...
+         * array.keys() array.entries()
+         */
+
+        let fruits = ['apple','banner','orange'];
+        for(let [key,val] of fruits.entries()) {
+            // console.log(key,val);
+        }
+
+        /**
+         * 数组转换
+         * 将类数组转换为数组
+         * Array.from(args) args中含有length即可
+         */
+        let str = 'abcdef';
+        let json2 = {
+            0:'tom',
+            1:'jack',
+            2:'marry',
+            length:3
+        };
+        // console.log(str.split(''));
+        // console.log(Array.from(str));
+        // console.log(Array.of(json2));
+        // console.log([...str]);
+
+        function show_test() {
+            let args = Array.from(arguments);
+            // console.log(args instanceof Array);
+        }
+        show_test(1,2,3,4);
+
+        /**
+         * Array.of()
+         * 将一组值转成数组
+         */
+
+        let arrayToTrans = Array.of(1,2,3,4,4);
+        // console.log(arrayToTrans);
+
+        /**
+         * find()/findIndex()
+         * 寻找首个符合条件的元素(未找到返回undefined)/下标（未找到返回-1）
+         */
+
+        let numbers = [1,2,4,4,5];
+        let returnValue = numbers.find((value,index,array) => {
+            return value == 40;
+        });
+        console.log(returnValue);
+
+        /**
+         * fill(content,start,end)
+         * 填充数组
+         */
+
+        let newList = new Array(10);
+        newList[0] = '二狗子';
+        newList.fill('儿子',1);
+        console.log(newList)
+    </script>
+</body>
+</html>

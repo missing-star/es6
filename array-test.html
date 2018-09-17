@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组循环测试</title>
+</head>
+<body>
+    <script>
+        let list = [
+                {title:'abc',show:false},
+                {title:'bbb',show:true},
+                {title:'sfad',show:true},
+                {title:'fdf',show:true},
+                {title:'hghre',show:false},
+                {title:'fdafe',show:true},
+                {title:'aaa',show:false}
+            ];
+        let nums = [1,2,4,2,1,3,4];
+        let sum = nums.reduce((previousValue,currentValue,currentIndex,array) => {
+           return previousValue + currentValue;
+        });
+        console.log(sum);
+    </script>
+</body>
+</html>

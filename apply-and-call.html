@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call apply</title>
+</head>
+<body>
+    <script>
+        function Person(name,name2) {
+            console.log(name,name2,this);
+            this.name = name;
+        }
+
+        function Student() {
+            this.getName = function() {
+                console.log(this.name);
+            }
+            console.log(this);
+            // Person.apply(this,['Tom','Jack']);
+            // Person.call(this,'Tom','Jack');
+            //bind(obj,args,...)返回值为function 需要手动运行
+            Person.bind(this,'Tom','Jack')();
+        }
+        let stu = new Student();
+        stu.getName();
+    </script>
+</body>
+</html>

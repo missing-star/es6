@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function userLogin() {
+            return new Promise((resolve,reject) => {
+               resolve({code:1,success:true});
+            });
+        }
+
+        function getUserInfo() {
+            console.log('getUserInfo...');
+            return new Promise((resolve,reject) => {
+               resolve({code:1,msg:'my name is TOM'});
+            });
+        }
+
+        userLogin().then(res => {
+            return new Promise((resolve,reject) => {
+               if(res.code == 1) {
+                   resolve({code:1,msg:'user login success'});
+               }
+               else {
+                   reject({code:0,msg:'user is not login'})
+               }
+            });
+        }).then(res => {
+            if(res.code == 1) {
+                return getUserInfo();
+            }
+        },err => {
+            console.log(`getUserInfo fail:${JSON.stringify(err)}`);
+        }).then(res => {
+            console.log(res);
+        },err => {
+
+        });
+    </script>
+</body>
+</html>

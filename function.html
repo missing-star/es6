@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数</title>
+</head>
+<body>
+    <script>
+        /**
+         * 1.箭头函数不可以当做钩构造函数
+         * 2.箭头函数不绑定this,arguments
+         * @type {{id: number, show: obj.show}}
+         */
+        let obj = {
+            id:1,
+            show:function() {
+                console.log(this.id);
+            }
+        }
+        let foo = (a,...args) => {
+            console.log(args);
+        }
+
+        foo(12,23,45);
+    </script>
+</body>
+</html>

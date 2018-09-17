@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="module">
+        import module,{a,b,c,show} from './modules/person.js'
+        console.log(a,b,c);
+        setTimeout(() => {
+            console.log(`1s after c = ${c}`);
+        },2000);
+        show();
+        console.log(module);
+        new module.Person('tom',20).getUser();
+    </script>
+</body>
+</html>

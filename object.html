@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象简洁语法</title>
+</head>
+<body>
+    <script>
+        let name = 'Tom';
+        let age  =  19;
+
+        let person = {
+            name,
+            age,
+            showAge() {
+                return this.age;
+            }
+        }
+        // console.log(person.showAge());
+
+        /**
+         * 对象比较
+         */
+        let flag = Object.is(NaN,NaN);
+        // console.log(flag);
+
+        /**
+         * Object.assign(target,source,source1...)
+         * 合并对象
+         * 重复变量名覆盖
+         */
+        let json = {
+            a:1
+        }
+        let json2 = {
+            a:4,
+            b:2
+        }
+        let json3 = {
+            c:3
+        }
+
+        let jsonNew = Object.assign({},json,json2,json3);
+
+        console.log(jsonNew);
+        /**
+         * ...扩展运算符
+         */
+        let {a,b,...c} = {a:'Tom',b:'female',age:20,address:'abc'};
+        console.log(a,b,c);
+    </script>
+</body>
+</html>
