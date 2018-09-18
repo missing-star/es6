@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类</title>
+</head>
+<body>
+    <script>
+        // function Person(name,age) {
+        //     this.name = name;
+        //     this.age = age;
+        // }
+        // Person.prototype.getName = function() {
+        //     console.log(this.name);
+        // }
+        //
+        // let p = new Person('tom',10);
+        // p.getName();
+
+        class Person {
+            constructor(name,age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            getName() {
+                console.log(this.name);
+            }
+
+            getAge() {
+                console.log(this.age);
+            }
+        }
+
+        let person = new Person('Marry',20);
+        person.getName();
+        person.getAge();
+
+    </script>
+</body>
+</html>
