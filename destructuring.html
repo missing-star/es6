@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解构赋值</title>
+</head>
+<body>
+    <script>
+        /**
+         * 解构可以赋值默认值（当对应的值为undefined时）
+         */
+
+        //数组解构赋值
+        let [a,b,c,d=40] = [1,2,4,null];
+
+        //对象解构赋值
+        /**
+         * 对象解构赋值，变量名称要对应，或者（变量名：自定义名称）
+         */
+       let person = {age:20,sex:'female',address:'china'};
+       let {age:ag,sex:se} = person;
+
+       console.log(ag,se);
+       let p = {
+           list:[
+               'hello',
+               {
+                   city:'南京'
+               }
+
+           ]
+       }
+
+       // let {list:[x,y]} = p;
+       let {list,list:[x,y]} = p;
+
+
+       let v = {
+           person1:{
+               address:{
+                   ci:'南京'
+               }
+           }
+       }
+
+      let {person1,person1:{address,address:{ci}}} = v;
+       console.log(person1,address,ci);
+
+       let obj = {};
+       let arr = [];
+
+        ({pro1:obj.pro,pro2:arr[0]} = {pro1:'nacy',pro2:'tom'});
+
+       console.log(obj,arr);
+    </script>
+</body>
+</html>
