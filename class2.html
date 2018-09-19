@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类2</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(name,age) {
+                this.name = name;
+                this.age = age;
+                this.getName = this.getName.bind(this);
+            }
+
+            getName() {
+                console.log(this);
+                return this.name;
+            }
+        }
+        let p = new Person('Tom',20);
+        p.getName();
+        let {getName} = p;
+        getName();
+        /**
+         * getter
+         * setter
+         * 构造器中的this.xx = xx会调用 set xx()函数
+         */
+
+        class Dog {
+            constructor(name) {
+                this.name = name;
+            }
+
+            set sex(sex) {
+                console.log('setting sex');
+                // this.sex = sex;
+            }
+
+            get sex() {
+                console.log('getting sex');
+                // return this.sex;
+            }
+
+            static test() {
+                console.log('static function');
+            }
+        }
+
+        let dog = new Dog('lili');
+        dog.sex = 20;
+        Dog.test();
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>类实现拖拽</title>
+    <style>
+        div.drag{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            cursor: move;
+        }
+        div.drag.left{
+            left: 0;
+        }
+        div.drag.right{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="drag left" id="div-left">
+        div-left
+    </div>
+    <div class="drag right" id="div-right">
+        div-right
+    </div>
+    <script>
+        class Drag{
+            constructor(id) {
+                this.oDiv = document.querySelector(id);
+                //鼠标点击距离元素左侧的距离
+                this.disX = 0;
+                //鼠标点击距离元素左侧的距离
+                this.disY = 0;
+                this.init();
+            }
+
+            init() {
+                this.oDiv.onmousedown = function (ev) {
+                    console.log('down');
+                    this.disX = ev.clientX - this.oDiv.offsetLeft;
+                    this.disY = ev.clientY - this.oDiv.offsetTop;
+                    document.onmousemove = this.fnMove.bind(this);
+                    document.onmouseup = this.fnUp.bind(this);
+                    ev.preventDefault();
+                }.bind(this);
+            }
+
+            fnMove(ev) {
+                console.log('move');
+                this.oDiv.style.left = ev.clientX - this.disX + 'px';
+                this.oDiv.style.top = ev.clientY - this.disY + 'px';
+            }
+
+            fnUp(ev) {
+                document.onmousemove = null;
+            }
+        }
+
+        class DragRang extends Drag{
+            //重写父类方法
+            fnMove(ev) {
+                super.fnMove(ev);
+                if(ev.clientX - this.disX <= 0) {
+                    this.oDiv.style.left = 0;
+                }
+                if(ev.clientY - this.disY <= 0) {
+                    this.oDiv.style.top = 0;
+                }
+            }
+        }
+        new Drag('#div-left');
+
+        new DragRang('#div-right');
+    </script>
+</body>
+</html>

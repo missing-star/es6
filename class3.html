@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>继承</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(name) {
+                this.name = name;
+            }
+
+            showName() {
+                return this.name;
+            }
+        }
+
+        class Student extends Person {
+            constructor(name,skill) {
+                super(name);
+                this.skill = skill;
+            }
+
+            //覆盖父类方法
+            showName() {
+                //调用父类方法
+                super.showName();
+            }
+            showSkill() {
+                return this.skill;
+            }
+        }
+
+        let stu = new Student('tom');
+        console.log(stu.showName());
+    </script>
+</body>
+</html>
