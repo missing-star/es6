@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+<script>
+    function* gen() {
+        yield 'welcome';
+        yield 'to';
+        return 'China';
+    }
+
+    let res = gen();
+    // console.log(res.next(), res.next(), res.next(), res.next());
+    /**
+     * 继续调用next()为{done:true,value:undefined}
+     * res:{
+     *     done:(是否还有下一个值)
+     *     value:(当前值)
+     * }
+     */
+
+    for (let value of res) {
+        //return的内容不会被遍历
+        console.log(value);
+    }
+
+    /**
+     * generator解构赋值
+     */
+    let [a,...b] = gen();
+
+    console.log(a,b);
+
+    /**
+     * 扩展运算符
+     */
+    function * genTest() {
+        yield 'welcome';
+        yield 'to';
+        return 'China';
+    }
+    console.log('===============================');
+    console.log(...genTest());
+
+    /**
+     * Array.from(a,b,c....)
+     */
+
+    let arr = Array.from(gen());
+    console.log(arr);
+
+    /**
+     * 解决异步
+     */
+    console.log('===============axios=====================');
+
+
+</script>
+</body>
+</html>
