@@ -58,6 +58,22 @@
      */
     console.log('===============axios=====================');
 
+    function * generatorAxios() {
+        let val = yield 'missing-star';
+        yield axios.get(`https://api.github.com/users/${val}`);
+    }
+
+    let gen2 = generatorAxios();
+
+    let username = gen2.next().value;
+
+    let response = gen2.next(username);
+
+    console.log(response);
+    response.value.then(res => {
+        console.log(res);
+    })
+
 
 </script>
 </body>
