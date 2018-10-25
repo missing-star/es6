@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /**
+         * new set(数组[])
+         * @type {WeakSet<object>}
+         */
+        // let set = new Set({a:1}); error
+        let weakSet = new WeakSet();
+        weakSet.add({a:'a',b:'b'})
+        console.log(weakSet);
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * set集合里元素不可以重复
+     * @type {Set<string>}
+     */
+    let set = new Set(['a', 'b', 'b',1]);
+    set.add('1');
+    set.delete('b');
+    console.log(set.has('1'));
+    console.log(set.size);
+    console.log(set);
+    //清空set集合
+    // set.clear();
+
+    for(let item of set) {
+        console.log(item);
+    }
+
+    for(let [key,value] of set.entries()) {
+        console.log(key,value);
+    }
+
+    set.forEach((value,index) => {
+        console.log(value,index);
+    });
+</script>
+</body>
+</html>

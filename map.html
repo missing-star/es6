@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        /**
+         * key值可以为json对象
+         * @type {Map<any, any>}
+         */
+        let map = new Map();
+        let json = {
+            a:1,
+            b:2
+        }
+        map.set(json,'tom');
+        map.set('name',json)
+        console.log(map);
+        console.log(map.get(json),map.get('name'));
+
+        console.log(map.delete('name'));
+
+        console.log(map.get('name'));
+        console.log(map.has(json));
+
+        map.clear();
+        console.log(map);
+
+        /**
+         * 循环
+         */
+        let map2 = new Map();
+        map2.set('name','tom');
+        map2.set('age',22);
+
+        for(let [key,value] of map2.entries()) {
+            console.log(key,value);
+        }
+
+        map2.forEach((value,key) => {
+            console.log(key,value);
+        })
+    </script>
+</body>
+</html>

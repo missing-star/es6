@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let set = new Set();
+
+    /**
+     * 链式操作
+     * add:return set
+     */
+
+    set.add('2').add('d').add('fff');
+    set.add('rrr');
+    console.log(set);
+
+    /**
+     * 数组去重
+     */
+
+    let list = [3,21,24,5,1,1,13,4,54];
+
+    let newList = [...new Set(list)];
+
+    console.log(newList);
+
+</script>
+</body>
+</html>
