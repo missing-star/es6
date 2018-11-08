@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>代理创建DOM元素</title>
+</head>
+<body>
+<script>
+    const DOM = new Proxy({},{
+        get(target,property) {
+            return function (attrs = {},...children) {
+                let elem = document.createElement(property);
+                for(let key of Object.keys(attrs)) {
+                    elem.setAttribute(key,attrs[key]);
+                }
+
+                for(let child of children) {
+                    if(typeof child == "string") {
+                        child = document.createTextNode(child);
+                    }
+                    elem.appendChild(child);
+                }
+                return elem;
+            }
+        }
+    });
+
+    let div = DOM.div({id:'demo',class:'demo1'},'我是div','内容啊啊啊',DOM.a({class:'link',href:'https://www.baidu.com'},'访问百度'));
+    console.log(div);
+    document.body.appendChild(div);
+</script>
+</body>
+</html>

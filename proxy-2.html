@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>代理</title>
+</head>
+<body>
+<script>
+    let obj = {
+        name: 'tom'
+    };
+
+    let newObj = new Proxy(obj, {
+        get(target, property) {
+            if(property in  target) {
+                return target[property];
+            }
+            else {
+                console.warn(`${property} is not defined in this object`);
+            }
+        }
+    });
+
+    console.log(newObj.age);
+</script>
+</body>
+</html>
